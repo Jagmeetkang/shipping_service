@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,6 +26,16 @@ public class ShippingService {
         shipment.setStatus("Processing");
         shipment.setEstimatedDeliveryDate(LocalDate.now().plusDays(6));
         shipment.setShippingAddress(shipmentRequest.getShippingAddress());
+        shipmentRepository.save(shipment);
+        return shipment;
+    }
+
+
+    public Shipment statusUpdater(long shipmentId, String newStatus){
+        Shipment shipment = shipmentRepository.findById(shipmentId)
+                            .orElseThrow(()->new RuntimeException("Shipment not found"));
+
+        shipment.setStatus(newStatus);
         shipmentRepository.save(shipment);
         return shipment;
     }

@@ -20,8 +20,14 @@ public class ShippingController {
     private final ShippingService shippingService;
 
     @PostMapping("/create")
-    public ResponseEntity<Shipment> CreateShipment(@RequestBody ShipmentRequest shipmentRequest){
+    public ResponseEntity<Shipment> createShipment(@RequestBody ShipmentRequest shipmentRequest){
        Shipment shipment=shippingService.createShipment(shipmentRequest);
        return new ResponseEntity<>(shipment, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/status-update/")
+    public ResponseEntity<Shipment> statusUpdate(@RequestParam Long id, @RequestParam String status){
+        Shipment shipment=shippingService.statusUpdater(id,status);
+        return new ResponseEntity<>(shipment,HttpStatus.CREATED);
     }
 }
