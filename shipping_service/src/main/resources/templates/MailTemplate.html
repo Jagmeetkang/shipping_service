@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .status {
+            background: #007bff;
+            color: white;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .details {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <h2>Order <span th:text="${shipment.orderId}"></span> Status Update</h2>
+    <div class="status">
+        Status: <span th:text="${shipment.status}"></span>
+    </div>
+    <div class="details">
+        <p><strong>Estimated Delivery:</strong> <span th:text="${shipment.estimatedDeliveryDate}"></span></p>
+        <p><strong>Tracking Number:</strong> <span th:text="${shipment.trackingNumber}"></span></p>
+    </div>
+    <div class="footer">
+        <p>Thank you for your order!</p>
+    </div>
+</div>
+</body>
+</html>

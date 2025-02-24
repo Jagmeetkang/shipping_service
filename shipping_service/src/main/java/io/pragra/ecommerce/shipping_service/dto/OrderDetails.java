@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ShipmentRequest {
+public class OrderDetails {
     private String orderId;
     private String shippingAddress;
     private String email;
