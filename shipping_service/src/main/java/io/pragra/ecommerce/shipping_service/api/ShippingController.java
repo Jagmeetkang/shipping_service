@@ -1,6 +1,6 @@
 package io.pragra.ecommerce.shipping_service.api;
 
-import io.pragra.ecommerce.shipping_service.dto.ShipmentRequest;
+import io.pragra.ecommerce.shipping_service.dto.OrderDetails;
 import io.pragra.ecommerce.shipping_service.entity.Shipment;
 import io.pragra.ecommerce.shipping_service.repository.ShipmentRepository;
 import io.pragra.ecommerce.shipping_service.service.ShippingService;
@@ -20,8 +20,8 @@ public class ShippingController {
     private final ShippingService shippingService;
 
     @PostMapping("/create")
-    public ResponseEntity<Shipment> createShipment(@RequestBody ShipmentRequest shipmentRequest){
-       Shipment shipment=shippingService.createShipment(shipmentRequest);
+    public ResponseEntity<Shipment> createShipment(@RequestBody OrderDetails orderDetails){
+       Shipment shipment=shippingService.createShipment(orderDetails);
        return new ResponseEntity<>(shipment, HttpStatus.CREATED);
     }
 

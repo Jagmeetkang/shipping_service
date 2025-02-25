@@ -25,6 +25,7 @@ public class Shipment {
     private String status;
     private LocalDate estimatedDeliveryDate;
     private String shippingAddress;
+    private String mailId;
 
 
 }
